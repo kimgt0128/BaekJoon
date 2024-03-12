@@ -4,7 +4,7 @@
 using namespace std;
 
 string cmp1, cmp2;
-int cnt1[26], cnt2[26];
+int cnt[26];
 bool possible = true;
 
 int main(void) {
@@ -12,18 +12,17 @@ int main(void) {
 	cin >> N;
 	while (N--) {
 		possible = true;
-		memset(cnt1, 0, sizeof(cnt1));
-		memset(cnt2, 0, sizeof(cnt2));
+		memset(cnt, 0, sizeof(cnt));
 		cin >> cmp1 >> cmp2;
 	
 		for (int i = 0; i < cmp1.size(); i++) {
-			cnt1[cmp1[i] - 'a']++;
-			cnt2[cmp2[i] - 'a']++;
+			cnt[cmp1[i] - 'a']++;
+			cnt[cmp2[i] - 'a']--;
 			
 		}
 
 		for (int i = 0; i < 26; i++) {
-			if (cnt1[i] != cnt2[i]) {
+			if (cnt[i]) {
 				possible = false;
 				break;
 			}
