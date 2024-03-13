@@ -16,8 +16,8 @@ int main(void) {
 		else woman[Y]++;
 	}
 	//count: 한 번의 반복문으로 해결해도 됨!
-	for (auto e : man) cnt += (e + 1) / 2;
-	for (auto e : woman)cnt += (e + 1) / 2;
+	for (auto e : man) cnt += (e + K - 1) / K;
+	for (auto e : woman)cnt += (e + K - 1) / K;
 
 	cout << cnt;
 	return 0;
