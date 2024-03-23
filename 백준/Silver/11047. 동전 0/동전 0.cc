@@ -2,24 +2,23 @@
 
 using namespace std;
 
-int money[10];
+int N, K, ans;
+int coin[10];
 
 int main(void) {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    int N, K;
-    int idx = 0;
-    int ans = 0;
+	cin >> N >> K;
+	//input
+	for (int i = 0; i < N; i++) {
+		cin >> coin[i];
+	}
 
-    cin >> N >> K;
-    for (idx = 0; idx < N; idx++) cin >> money[idx];
-
-    for (int i = N - 1; i >= 0; i--) {
-        ans += K / money[i];
-        K %= money[i];
-
-    }
-    cout << ans;
-
-    return 0;
+	//solve
+	for(int i=N-1; i >= 0; i--) {
+		int a = K / coin[i];
+		ans += a;
+		K -= coin[i] * a;
+		if (K == 0)  break;
+	}
+	cout << ans;
+	return 0;
 }
