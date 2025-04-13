@@ -3,4 +3,4 @@
 
 
 # 관련 링크
-[노션](https://www.notion.so/1d446c2fafdf80389960c870b0158c55?pvs=4)
+[노션 풀이 기록](https://www.notion.so/1d446c2fafdf80389960c870b0158c55?pvs=4)
