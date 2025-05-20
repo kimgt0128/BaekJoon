@@ -1,46 +1,43 @@
 #include<iostream>
 #include<vector>
 #define INF 0x3f3f3f3f
-
-
+#define FAST_IO cin.tie(0), cout.tie(0), ios_base::sync_with_stdio(0)
 using namespace std;
 
-vector<vector<int>> graph;
-vector<vector<int>> d;
-int N, M;
-int start, cnt;
+int n, m;
+int d[101][101];
+
+void floyd() {
+	for (int k = 1; k < n + 1; k++) {
+		for (int i = 1; i < n + 1; i++) {
+			for (int j = 1; j < n + 1; j++) {
+				d[i][j] = min(d[i][j], d[i][k] + d[k][j]);
+			}
+		}
+	}
+}
 
 int main(void) {
-	cin >> N >> M;
-	d = vector<vector<int>> (N + 1);
-
-	for (int i = 1; i < N + 1; i++) {
-		d[i] = vector<int>(N + 1, INF);
+	FAST_IO;
+	cin >> n >> m;
+	for (int i = 0; i < n + 1; i++) {
+		fill(d[i], d[i] + n+1, INF);
 		d[i][i] = 0;
 	}
 
-	for (int i = 0; i < M; i++) {
+	for (int i = 0; i < m; i++) {
 		int u, v, c;
 		cin >> u >> v >> c;
 		d[u][v] = min(d[u][v], c);
 	}
+	floyd();
 
-	for (int k = 1; k < N + 1; k++) {
-		for (int i = 1; i < N + 1; i++) {
-			for (int j = 1; j < N + 1; j++) {
-				d[i][j] = min(d[i][k] + d[k][j], d[i][j]);
-			}
+	for (int i = 1; i < n + 1; i++) {
+		for (int j = 1; j < n + 1; j++) {
+			cout << (d[i][j] == INF ? 0 : d[i][j]) << " ";
 		}
+		cout << "\n";
 	}
 
-	for (int i = 1; i < N + 1; i++) {
-		for (int j = 1; j < N + 1; j++) {
-			if (d[i][j] == INF) cout << 0;
-			else cout << d[i][j];
-			cout << " ";
-		}
-		cout << '\n';
-	}
 	return 0;
-
 }
