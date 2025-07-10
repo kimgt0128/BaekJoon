@@ -49,12 +49,12 @@ int solve() {
         if (!flag) break;
 
         //지우기
-        while (!s.empty()) {
-            pair<int, int> cor = *s.begin();
+        
+        for (auto cor : s) {
             mp[cor.first][cor.second] = 'X';
             ans++;
-            s.erase(s.begin());
         }
+        s.clear();
         // 아래로 밀기        
         for (int i = N - 1; i >= 0; i--) {
             for (int j = 0; j < M; j++) {
