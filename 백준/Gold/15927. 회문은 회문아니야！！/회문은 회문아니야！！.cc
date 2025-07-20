@@ -5,9 +5,8 @@ using namespace std;
 string str;
 
 int main(void) {
-	
+	FAST_IO;
 	cin >> str;
-
 	int st = 0;
 	int en = str.size() - 1;
 	bool flag = false;
@@ -19,11 +18,9 @@ int main(void) {
 		}
 		else break;
 	}
-
 	if (st > en) {
 		if (!flag) cout << -1;
 		else cout << str.size() - 1;
 	}
 	else cout << str.size();
-
 }
