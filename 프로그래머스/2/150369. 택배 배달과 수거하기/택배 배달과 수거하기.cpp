@@ -16,7 +16,7 @@ long long solution(int cap, int n, vector<int> deliveries, vector<int> pickups) 
 
         if (del >= 0 && pic >= 0) idx--;
         else {
-            answer += 2LL * (tmp+1);  // 꼭 long long 곱 연산!
+            answer += 2 * (tmp+1);
             tmp = idx;
             deliveries[idx] = -del;
             pickups[idx] = -pic;
@@ -24,11 +24,7 @@ long long solution(int cap, int n, vector<int> deliveries, vector<int> pickups) 
             pic = cap;
         }
     }
-
-    // 마지막 루프에서 else로 빠지지 않았다면, 이동이 필요하므로 한 번 더 거리 추가
-    if (del < cap || pic < cap) {
-        answer += 2LL * (tmp+1);
-    }
+    if(del < cap || pic < cap ) answer += 2 * (tmp+1);
 
     return answer;
 }
