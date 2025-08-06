@@ -86,7 +86,7 @@ int main(void) {
 		bfs(pos.first, pos.second);
 			
 		for (auto f : eat) {
-			if (visit[f.first][f.second] && board[f.first][f.second] > 0) pq.push(make_tuple(board[f.first][f.second], f.first, f.second));
+			if (visit[f.first][f.second]) pq.push(make_tuple(board[f.first][f.second], f.first, f.second));
 		}
 
 		if (pq.empty()) break;
